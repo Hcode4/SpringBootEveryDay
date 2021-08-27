@@ -7,3 +7,4 @@ package com.hyz.springbooteveryday.service;
 public class MsgLogService {
 
 }
+

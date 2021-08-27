@@ -13,8 +13,19 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>SpringBootEveryDay</name>
     <description>Demo project for Spring Boot</description>
+
     <properties>
         <java.version>1.8</java.version>
+        <powermock.version>1.7.1</powermock.version>
+        <maven.compiler.source>1.6</maven.compiler.source>
+        <maven.compiler.target>1.6</maven.compiler.target>
+        <mockito1.version>1.10.19</mockito1.version>
+        <mockito2.version>2.8.9</mockito2.version>
+        <easymock.version>3.4</easymock.version>
+        <assertj-core.version>3.5.2</assertj-core.version>
+        <junit.version>4.12</junit.version>
+        <spring.version>3.0.5.RELEASE</spring.version>
+        <commons-lang3.version>3.4</commons-lang3.version>
     </properties>
     <dependencies>
         <dependency>
@@ -34,14 +45,6 @@
         </dependency>
 
 
-        <!-- https://mvnrepository.com/artifact/org.powermock/powermock-api-mockito2 -->
-        <dependency>
-            <groupId>org.powermock</groupId>
-            <artifactId>powermock-api-mockito2</artifactId>
-            <version>2.0.9</version>
-            <scope>test</scope>
-        </dependency>
-
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>
@@ -50,6 +53,75 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-core</artifactId>
+            <version>${powermock.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-api-mockito</artifactId>
+            <version>${powermock.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-api-mockito2</artifactId>
+            <version>${powermock.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-api-mockito-common</artifactId>
+            <version>${powermock.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-api-support</artifactId>
+            <version>${powermock.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-module-junit4-rule</artifactId>
+            <version>${powermock.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-classloading-xstream</artifactId>
+            <version>${powermock.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-module-junit4-rule-agent</artifactId>
+            <version>${powermock.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-api-easymock</artifactId>
+            <version>${powermock.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-module-testng</artifactId>
+            <version>${powermock.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-module-junit4</artifactId>
+            <version>${powermock.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.easymock</groupId>
+            <artifactId>easymock</artifactId>
+            <version>${easymock.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito1.version}</version>
+        </dependency>
 
 
     </dependencies>
