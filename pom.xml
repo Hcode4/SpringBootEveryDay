@@ -26,6 +26,8 @@
         <junit.version>4.12</junit.version>
         <spring.version>3.0.5.RELEASE</spring.version>
         <commons-lang3.version>3.4</commons-lang3.version>
+        <mybatis-version>2.2.0</mybatis-version>
+        <mysql-connect-version>8.0.26</mysql-connect-version>
     </properties>
     <dependencies>
         <dependency>
@@ -123,6 +125,22 @@
             <version>${mockito1.version}</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>${mybatis-version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connect-version}</version>
+        </dependency>
+
+
+
 
     </dependencies>
 
@@ -138,6 +156,14 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
                 </configuration>
             </plugin>
         </plugins>
