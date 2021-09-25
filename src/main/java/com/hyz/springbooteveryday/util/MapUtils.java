@@ -4,6 +4,7 @@ import org.springframework.util.CollectionUtils;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author HYZ
@@ -35,7 +36,47 @@ public class MapUtils {
 
         return secondFirstMapMap;
     }
+
+    /**
+     * 将Map 根据另一个Map进行映射
+     *
+     * @param rawMap     需要映射到原始Map
+     * @param reflectMap 映射基础，映射规则是 key：是最终结果Key；value：是raw的原始key
+     * @param <T>
+     * @param <U>
+     * @return
+     */
+    public static <T, U> Map<U, Map<String, T>> reflectMap(Map<String, T> rawMap, Map<U, String> reflectMap) {
+
+        return reflectMap.entrySet().stream()
+                .collect(Collectors.toMap(Map.Entry::getKey,
+                        entry -> rawMap.entrySet().stream()
+                                .filter(rawMapEntry -> rawMapEntry.getKey().equals(entry.getValue()))
+                                .collect(Collectors.toMap(Map.Entry::getKey,
+                                        Map.Entry::getValue))));
+    }
+
+    /**
+     * 将Map 根据另一个Map进行映射
+     *
+     * @param rawMap     需要映射到原始Map
+     * @param reflectMap 映射基础，映射规则是 key：是最终结果value；key：是raw的原始key
+     * @param <T>
+     * @param <U>
+     * @return
+     */
+    public static <T, U> Map<U, Map<String, T>> reflectDirectMap(Map<String, T> rawMap, Map<String, U> reflectMap) {
+
+        return reflectMap.entrySet().stream()
+                .collect(Collectors.toMap(Map.Entry::getValue,
+                        entry -> rawMap.entrySet().stream()
+                                .filter(rawMapEntry -> rawMapEntry.getKey().equals(entry.getKey()))
+                                .collect(Collectors.toMap(Map.Entry::getKey,
+                                        Map.Entry::getValue))));
+    }
+
     
+
 
     public static void main(String[] args) {
 
