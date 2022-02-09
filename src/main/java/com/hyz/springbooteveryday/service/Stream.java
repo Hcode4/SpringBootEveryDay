@@ -2,8 +2,11 @@ package com.hyz.springbooteveryday.service;
 
 import com.hyz.springbooteveryday.entity.UserDO;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 
 /**
@@ -32,5 +35,31 @@ public class Stream {
         return userDOS.stream().collect(Collectors.groupingBy(UserDO::getSex,
                         Collectors.toMap(UserDO::getAge, UserDO::getName,
                                 (oldValue, newValue) -> oldValue)));
+    }
+
+
+    /**
+     * 将Map第二维打平
+     *
+     * @param mapMap
+     * @param binaryOperator
+     * @param <J>
+     * @param <Q>
+     * @param <K>
+     * @return
+     */
+    public static  <J, Q, K> Map<J, K> reduceMap(Map<J, Map<Q, K>> mapMap, BinaryOperator<K> binaryOperator) {
+
+        List<Integer> valueList = new ArrayList<>();
+
+        Map<J, K> result = new HashMap<>();
+
+        for (Map.Entry<J, Map<Q, K>> mapEntry : mapMap.entrySet()) {
+
+            K value = mapEntry.getValue().values().stream().reduce(binaryOperator).orElse(null);
+
+            result.put(mapEntry.getKey(), value);
+        }
+        return result;
     }
 }

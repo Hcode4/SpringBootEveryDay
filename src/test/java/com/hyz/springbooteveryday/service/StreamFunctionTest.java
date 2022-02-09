@@ -7,7 +7,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -41,16 +43,19 @@ public class StreamFunctionTest {
 
     @Test
     public void functionTest() {
-        List<String> result = strSplit.apply("123,234");
-        log.info(String.valueOf(result));
 
-        op(strSplit, "123,234");
+        Map<String, Integer> map = new HashMap<>() {{
+            put("a", 1);
+            put("b", 2);
+            put("c", 3);
+        }};
 
-        stringConsumer.accept("123");
+        Map<String, Map<String, Integer>> mapMap = new HashMap<>();
+        mapMap.put("A", map);
 
-        stringPredicate.test("123");
+        var value = Stream.reduceMap(mapMap, Integer::sum);
 
-        log.info(stringGet.get());
+        log.info(value.toString());
 
     }
 

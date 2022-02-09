@@ -3,6 +3,7 @@ package com.hyz.springbooteveryday.service;
 import com.hyz.springbooteveryday.dao.UserDAO;
 import com.hyz.springbooteveryday.entity.UserDO;
 import lombok.extern.slf4j.Slf4j;
+import lombok.val;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -38,4 +39,13 @@ public class StreamTest {
         log.info(groupMapListParam.toString());
 
     }
+
+    @Test
+    public void varTest() {
+        val value = "Hello World";
+        System.out.println(value);
+    }
+
+
+
 }
